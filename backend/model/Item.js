@@ -15,7 +15,7 @@ let Item = new Schema({
   },
   image: {
     type: String,
-  },
+  }
 }, {
   collection: 'items'
 })

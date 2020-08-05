@@ -39,12 +39,14 @@ export class AddItemComponent implements OnInit {
     private itemApi: ApiService,
   ) { }
 
-  addImage(event)
-  {
+  onFileChange(event) {
+  
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.image = file;
-      console.log(file);
+      this.itemForm.patchValue({
+        fileSource: file
+      });
+      console.log(this.itemForm);
     }
   }
   
@@ -53,9 +55,11 @@ export class AddItemComponent implements OnInit {
       item_name: ['', [Validators.required]],
       item_description: ['', [Validators.required]],
       item_price: ['', [Validators.required]],
-      image:this.image
+      file: ['', [Validators.required]],
+      fileSource: ['', [Validators.required]]
     })
   }
+
 
   
   /* Get errors */
@@ -64,8 +68,14 @@ export class AddItemComponent implements OnInit {
   }  
 
   submitItemForm() {
-    if (this.itemForm.valid) {
-      this.itemApi.AddItem(this.itemForm.value).subscribe(res => {
+    if (this.itemForm.valid) {  
+      const formData = new FormData();
+      formData.append('item_name', this.itemForm.value.item_name);
+      formData.append('item_description', this.itemForm.value.item_description);
+      formData.append('item_price', this.itemForm.value.item_price);
+      formData.append('file', this.itemForm.value.fileSource);
+      console.log(formData);
+      this.itemApi.AddItem(formData).subscribe(res => {
         Swal.fire('Item Added');
         this.ngZone.run(() => this.router.navigateByUrl('/items-list'))
       });

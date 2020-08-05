@@ -11,14 +11,16 @@ const storage = multer.diskStorage({
       callBack(null, 'uploads')
   },
   filename: (req, file, callBack) => {
-      callBack(null, `FunOfHeuristic_${file.originalname}`)
+      callBack(null, `image_${file.originalname}`)
   }
 })
 const upload = multer({ storage: storage })
+
 // Add Item
-itemRoute.route('/add-item').post((req, res, next) => {
-  console.log(req);
-  Item.create(req.body, (error, data) => {
+itemRoute.route('/add-item').post(upload.single('file'),(req, res, next) => {
+  let itemName = req.body.item_name; itemDescription = req.body.item_description; itemPrice = req.body.item_price; filename = req.file.filename; 
+  ins=new Item({'item_name':itemName,'item_description':itemDescription,'item_price':itemPrice, 'image':filename});
+  ins.save((error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -57,7 +59,7 @@ itemRoute.route('/update-item/:id').put((req, res, next) => {
   }, (error, data) => {
     if (error) {
       return next(error);
-      console.log(error)
+      console.log(error);
     } else {
       res.json(data)
       console.log('Item successfully updated!')

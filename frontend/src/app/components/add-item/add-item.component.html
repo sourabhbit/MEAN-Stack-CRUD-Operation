@@ -43,7 +43,7 @@
       <div class="controlers-wrapper">
         <!-- Image -->
         <label for="image">Image</label>
-        <input type="file" class="form-control" formControlName="image" (change)="addImage($event)">
+        <input type="file" class="form-control"  id="file" formControlName="file" (change)="onFileChange($event)">
       </div>
     </mat-card>
 

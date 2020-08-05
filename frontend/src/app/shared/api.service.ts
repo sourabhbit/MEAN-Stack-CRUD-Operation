@@ -16,7 +16,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   // url="http://localhost:8000/api/"
   // Add item
-  AddItem(data: Item): Observable<any> {
+  AddItem(data): Observable<any> {
     let API_URL = `${this.endpoint}/add-item`;
     return this.http.post(API_URL, data)
       .pipe(

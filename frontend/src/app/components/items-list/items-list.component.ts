@@ -14,10 +14,11 @@ export class ItemsListComponent implements OnInit {
   ItemData: any = [];
   dataSource: MatTableDataSource<Item>;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['_id', 'item_name', 'item_description', 'item_price', 'action'];
+  displayedColumns: string[] = ['_id', 'item_name', 'item_description', 'item_price', 'image', 'action'];
 
   constructor(private itemApi: ApiService) {
     this.itemApi.GetItems().subscribe(data => {
+      console.log(data);
       this.ItemData = data;
       this.dataSource = new MatTableDataSource<Item>(this.ItemData);
       setTimeout(() => {
