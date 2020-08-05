@@ -1,0 +1,50 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h1 class="mat-h1">Add Item</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form -->
+<div class="inner-wrapper">
+  <form [formGroup]="itemForm" (ngSubmit)="updateItemForm()" #resetItemForm="ngForm" novalidate>
+    <!-- Left block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Name -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Item name" formControlName="item_name">
+          <mat-error *ngIf="handleError('item_name', 'required')">
+            You must provide a<strong>item name</strong>
+          </mat-error>
+        </mat-form-field>
+      
+
+        <!-- Description -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" formControlName="item_description"></textarea>
+          <mat-error *ngIf="handleError('item_description', 'required')">
+            You must provide <strong>Description</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Price -->
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Price" formControlName="item_price">
+          <mat-error *ngIf="handleError('item_price', 'required')">
+            You must provide <strong>Price</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card>
+    <!-- Submit & Reset -->
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Update</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>

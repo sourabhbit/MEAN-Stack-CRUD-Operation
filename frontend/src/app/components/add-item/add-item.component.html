@@ -1,0 +1,59 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h1 class="mat-h1">Add Item</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form -->
+<div class="inner-wrapper">
+  <form [formGroup]="itemForm" (ngSubmit)="submitItemForm()" #resetItemForm="ngForm" novalidate>
+    <!-- Left block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Name -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" name="item_name"  id="item_name" formControlName="item_name">
+          <mat-error *ngIf="handleError('item_name', 'required')">
+            You must provide <strong>Name</strong>
+          </mat-error>
+        </mat-form-field>
+        
+        <!-- Description -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" name="item_description"  id="item_description" formControlName="item_description"></textarea>
+          <mat-error *ngIf="handleError('item_description', 'required')">
+            You must provide <strong>Description</strong>
+          </mat-error>
+        </mat-form-field>
+        
+        <!-- Price -->
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Price" name="item_price"  id="item_price" formControlName="item_price">
+          <mat-error *ngIf="handleError('item_price', 'required')">
+            You must provide <strong>Price</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <!-- Right block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Image -->
+        <label for="image">Image</label>
+        <input type="file" class="form-control" formControlName="image" (change)="addImage($event)">
+      </div>
+    </mat-card>
+
+    <!-- Submit & Reset -->
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Submit</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>
