@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "660f8508-2c16-4c39-8075-56495046f13c",
+		"name": "MEAN Stack CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": "To get all Documents"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/add-item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"item_name\": \"new data\",\r\n        \"item_description\": \"new item is good and eas to use\",\r\n        \"item_price\": \"18500\",\r\n        \"image\": \"C:\\\\fakepath\\\\first.jpeg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/add-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-item"
+					]
+				},
+				"description": "To add item "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/read-item/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "5f2abcfabfda17d9704d1d29",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/read-item/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"read-item",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "5f2abcfabfda17d9704d1d29",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5f2abcfabfda17d9704d1d29"
+						}
+					]
+				},
+				"description": "To read one item using MongoID"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/update-item/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"item_name\": \"new data updated\",\r\n    \"item_description\": \"new item is good and eas to use\",\r\n    \"item_price\": \"18500\",\r\n    \"image\": \"C:\\\\fakepath\\\\first.jpeg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/update-item/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"update-item",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "5f2abcfabfda17d9704d1d29",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5f2abcfabfda17d9704d1d29"
+						}
+					]
+				},
+				"description": "To update data"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/delete-item/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/delete-item/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"delete-item",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5f2abcfabfda17d9704d1d29"
+						}
+					]
+				},
+				"description": "To delete item"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
