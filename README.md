@@ -1,5 +1,7 @@
 # MEAN-Stack-CRUD-Operation
-CRUD Operation using MEAN Stack
+ * CRUD Operation using MEAN Stack
+ * Image Uploading using Multer
+ * Fetching Image to show on listing.
 
 ### How to start FrontEnd 
 * ```cd frontend```
